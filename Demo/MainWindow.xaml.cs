@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Demo
 {
@@ -26,12 +27,18 @@ namespace Demo
         public MainWindow()
         {
             InitializeComponent();
+
+            Timer = new DispatcherTimer();
+            Timer.Interval = TimeSpan.FromMilliseconds(250);
+            Timer.Tick += Timer_Tick;
+            Timer.Start();
         }
 
+        DispatcherTimer Timer { get; }
         Random Random = new Random();
         Model Model => DataContext as Model;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             var i = Random.Next(Model.Tests.Count);
             Model.Test = Model.Tests[i];

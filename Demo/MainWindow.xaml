@@ -14,8 +14,5 @@
             <local:Test Name="d"/>
         </local:Model>
     </Window.DataContext>
-    <DockPanel LastChildFill="True">
-        <TextBox DockPanel.Dock="Top" Text="{Binding Test.Name, Mode=OneWay}"/>
-        <Button Content="Click me many times" Click="Button_Click"/>
-    </DockPanel>
+    <TextBox DockPanel.Dock="Top" Text="{Binding Test.Name, Mode=OneWay}"/>
 </Window>
